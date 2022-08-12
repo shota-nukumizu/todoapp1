@@ -1,20 +1,22 @@
 # TodoApp1
 
-参照にあるGitHubリポジトリを参照して、再度開発し直した。しかし、**現時点ではログインページより後ろに進むことができない。**とは言っても数年前のプロジェクトなのでうまく機能しない
+参照にあるGitHubリポジトリを参照して、再度開発し直した。しかし、**現時点ではログインページより後ろに進むことができない。**
+
+![](screenshot.png)
 
 # ディレクトリ構造
 
 ## Flutter側(フロントエンド)
 
-```
-│  main.dart
+```powershell
+│  main.dart # アプリのコア部分
 │  
 ├─bloc
 │  ├─blocs
-│  │      user_bloc_provider.dart
+│  │      user_bloc_provider.dart #状態管理。rxdartパッケージで実装。
 │  │      
 │  └─resources
-│          api.dart
+│          api.dart #Flaskで開発したREST APIとの連携
 │          repository.dart
 │
 ├─models
@@ -40,7 +42,7 @@
 
 ## Flask側(バックエンド)
 
-```
+```powershell
 C:.
 │  app.py
 │  config.py
@@ -266,6 +268,43 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 ```
+
+▼エラーが発生している部分
+
+```dart
+TextButton(
+    child: Text("create one", style: redBoldText),
+    onPressed: () {
+        getSignupPage();
+    }) // おそらくonPressedがうまく機能していない可能性がある
+```
+
+▼エラーメッセージ。`Error: XMLHttpRequest error.`と出力された
+
+```
+Error: XMLHttpRequest error.
+C:/b/s/w/ir/cache/builder/src/out/host_debug/dart-sdk/lib/_internal/js_dev_runtime/private/ddc_runtime/errors.dart
+299:10  createErrorWithStack
+C:/b/s/w/ir/cache/builder/src/out/host_debug/dart-sdk/lib/_internal/js_dev_runtime/patch/core_patch.dart 341:28
+_throw
+C:/b/s/w/ir/cache/builder/src/out/host_debug/dart-sdk/lib/core/errors.dart 116:5
+throwWithStackTrace
+C:/b/s/w/ir/cache/builder/src/out/host_debug/dart-sdk/lib/async/zone.dart 1378:11
+callback
+C:/b/s/w/ir/cache/builder/src/out/host_debug/dart-sdk/lib/async/schedule_microtask.dart 40:11
+_microtaskLoop
+C:/b/s/w/ir/cache/builder/src/out/host_debug/dart-sdk/lib/async/schedule_microtask.dart 49:5
+_startMicrotaskLoop
+C:/b/s/w/ir/cache/builder/src/out/host_debug/dart-sdk/lib/_internal/js_dev_runtime/patch/async_patch.dart 166:15
+<fn>
+```
+
+# 開発環境
+
+* Windows 11
+* Flask
+* Flutter 3
+* Visual Studio Code
 
 # 参照
 
