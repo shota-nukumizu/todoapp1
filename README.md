@@ -17,27 +17,27 @@
 │  │      
 │  └─resources
 │          api.dart #Flaskで開発したREST APIとの連携
-│          repository.dart
+│          repository.dart #アプリ内で行う処理の関数をまとめたもの
 │
 ├─models
-│  │  global.dart
+│  │  global.dart #アプリ内で使う色に変数をつけたファイル
 │  │
 │  ├─authentication
-│  │      authorize.dart
+│  │      authorize.dart #認可システム
 │  │
 │  ├─classes
-│  │      task.dart
-│  │      user.dart
+│  │      task.dart #タスクのモデル
+│  │      user.dart #ユーザのモデル
 │  │
 │  └─widgets
-│          intray_todo_widget.dart
+│          intray_todo_widget.dart #おそらく完了済みのタスクを表示するWidget
 │
 └─UI
     ├─Intray
-    │      intray_page.dart
+    │      intray_page.dart #完了済みのタスクを表示するページ
     │
     └─Login
-            loginscreen.dart
+            loginscreen.dart #ログインページ
 ```
 
 ## Flask側(バックエンド)
