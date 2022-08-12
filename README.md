@@ -8,6 +8,8 @@
 
 ## Flutter側(フロントエンド)
 
+主にUI設計やFlaskとの連携を担当。
+
 ```powershell
 │  main.dart # アプリのコア部分
 │  
@@ -40,7 +42,11 @@
             loginscreen.dart #ログインページ
 ```
 
+状態管理は`rxdart`パッケージで実装。**`getx`や`riverpod`のような今時のパッケージを使って実装する場合とはまた癖があった。**
+
 ## Flask側(バックエンド)
+
+データベースとの連携、REST APIの設計や認証機能の実装を担当。ちなみに認証機能はToken認証をフル活用した。**ちなみにルーティング設定はFlask側で設定した。**
 
 ```powershell
 C:.
@@ -86,7 +92,7 @@ C:.
 
 # エラーが発生している箇所
 
-`lib/UI/Login/loginscreen.dart` 
+`lib/UI/Login/loginscreen.dart`(エラーが出力されているファイル)
 
 ```dart
 import 'package:flutter/material.dart';
